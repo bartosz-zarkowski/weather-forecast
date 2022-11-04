@@ -1,0 +1,44 @@
+App\Entity\Location:
+  properties:
+    longitude:
+      - Range:
+          groups: [ edit, new ]
+          min: -180
+          max: 180
+      - NotBlank: ~
+    latitude:
+      - Range:
+          groups: [ edit, new ]
+          min: -90
+          max: 90
+      - NotBlank: ~
+    city:
+      - Regex:
+          pattern: '/\d/'
+          match: false
+          message: City cannot contain a number
+      - Length:
+          min: 3
+    country:
+      - Regex:
+          pattern: '/\d/'
+          match: false
+          message: Country cannot contain a number
+      - Length:
+          min: 2
+          max: 2
+
+App\Entity\Measurement:
+  properties:
+    temperature:
+      - Range:
+          min: -60
+          max: 60
+    pressure:
+      - Range:
+          min: 800
+          max: 1200
+    description:
+      - Length:
+          max: 255
+
