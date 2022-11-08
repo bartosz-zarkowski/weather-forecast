@@ -31,6 +31,13 @@ class LocationRepository extends ServiceEntityRepository
         }
     }
 
+    public function findById($id)
+    {
+        $qb = $this->createQueryBuilder('l');
+        $qb->where('l.id = :id')->setParameter('id', $id);
+        return $qb->getQuery()->getSingleResult();
+    }
+
     public function findByCountryCity($country, $city)
     {
         $qb = $this->createQueryBuilder('l');
